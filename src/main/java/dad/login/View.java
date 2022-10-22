@@ -50,9 +50,6 @@ public class View extends GridPane {
         successAlert.setTitle("Iniciar sesión");
         successAlert.setHeaderText("Acceso permitido");
         successAlert.setContentText("Las credenciales de acceso son válidas.");
-        successAlert.setOnCloseRequest(event -> {
-            System.exit(0);
-        });
 
         errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setTitle("Iniciar sesión");

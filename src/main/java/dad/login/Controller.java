@@ -4,13 +4,18 @@ import dad.login.auth.AuthService;
 import dad.login.auth.FileAuthService;
 import dad.login.auth.LdapAuthService;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 public class Controller {
 
     private View view;
     private Model model;
 
-    public Controller() {
+    private Stage stage;
+
+    public Controller(Stage stage) {
+        this.stage = stage;
+
         view = new View();
         model = new Model();
 
@@ -31,7 +36,8 @@ public class Controller {
 
         try {
             if (auth.login(username, password)) {
-                view.getSuccessAlert().show();
+                view.getSuccessAlert().showAndWait();
+                stage.close();
             } else {
                 onFailedLogin();
             }
@@ -41,7 +47,7 @@ public class Controller {
     }
 
     private void onCancelClick(ActionEvent event) {
-        System.exit(0);
+        stage.close();
     }
 
     private void onFailedLogin() {
